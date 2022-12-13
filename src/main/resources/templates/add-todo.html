@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css} " />
+</head>
+
+<body>
+<div class="container">
+    <div class="col-md-6">
+        <h1>Add a new Todo Item</h1>
+        <form action="#" th:action="@{/todo}" th:object="${todo}" method="POST">
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input class="form-control" type="text" th:field="*{description}" id="description"
+                       placeholder="Description">
+                <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+            </div>
+<!--            <fieldset class="form-group">-->
+<!--                <label path="dueDate">Due Date</label>-->
+<!--                <input path="dueDate" type="text" class="form-control" th:field="*{dueDate}" id="dueDate"-->
+<!--                            required="required"  placeholder="Due Date"/>-->
+<!--                <errors path="DueDate" cssClass="text-warning" />-->
+<!--                <span th:if="${#fields.hasErrors('dueDate')}" th:errors="*{dueDate}"></span>-->
+<!--            </fieldset>-->
+            <div class="form-group row">
+                <label for="due-date" class="col-2 col-form-label">Due Date</label>
+                <div class="col-10">
+                    <input  class="form-control" type="date" id="due-date" name="trip-start"  th:field="*{dueDate}" placeholder="Due Date"
+                           value="2022-01-22">
+                    <!--                           min="2021-05-01" max="2022-12-31">-->
+<!--                    <errors path="DueDate" cssClass="text-warning" />-->
+<!--                    <span th:if="${#fields.hasErrors('dueDate')}" th:errors="*{dueDate}"></span>-->
+                </div>
+            <button type="submit" class="btn btn-success">Add Todo!</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>
